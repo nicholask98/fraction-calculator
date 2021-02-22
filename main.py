@@ -1,11 +1,24 @@
-def addition(num_1, num_2, denom_1, denom_2):
-    print('addition')
-    common_denom = denom_1 * denom_2
-    num_1 *= denom_2
-    num_2 *= denom_1
-    num_sum = num_1 + num_2
+# Euclid's algorithm
+def gcd(a,b):
+    if a == 0: 
+        return b 
+    return gcd(b % a, a) 
+  
+# Function to return LCM of two numbers 
+def lcm(a,b): 
+    return (a * b) / gcd(a,b)
 
-# FIXME: Find out how to find GCD and LCM
+def reduce_(a,b):
+    #FIXME: Finish this
+    
+
+    return a, b
+
+def addition(num_1, num_2, denom_1, denom_2):
+    denom_done = int(lcm(denom_1, denom_2))
+    num_done = int((num_1 * (denom_done / denom_1)) + (num_2 * (denom_done / denom_2)))
+    num_reduce, denom_reduce = reduce_(num_done, denom_done)
+    return '{}/{}'.format(num_reduce, denom_reduce)
 
 
 def subtraction(num_1, num_2, denom_1, denom_2):
@@ -36,12 +49,14 @@ denom_1 = int(list(user_input.split())[0].split('/').pop())
 denom_2 = int(list(user_input.split())[2].split('/').pop())
 
 if operator == '+':
-    addition(num1, num_2, denom_1, denom_2)
+    sum = addition(num_1, num_2, denom_1, denom_2)
+    
+    print(sum) #FIXME: CONVERT FRACTIONS TO MIXED NUMBERS
 elif operator == '-':
-    subtraction(num1, num_2, denom_1, denom_2)
+    subtraction(num_1, num_2, denom_1, denom_2)
 elif operator == '*':
-    multiplication(num1, num_2, denom_1, denom_2)
+    multiplication(num_1, num_2, denom_1, denom_2)
 elif operator == '/':
-    division(num1, num_2, denom_1, denom_2)
+    division(num_1, num_2, denom_1, denom_2)
 else:
     print("Error. Invalid operator.")
