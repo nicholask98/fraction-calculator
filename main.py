@@ -48,15 +48,18 @@ num_2 = int(list(user_input.split())[2].split('/').pop(0))
 denom_1 = int(list(user_input.split())[0].split('/').pop())
 denom_2 = int(list(user_input.split())[2].split('/').pop())
 
-if operator == '+':
-    sum = addition(num_1, num_2, denom_1, denom_2)
-    
-    print(sum) #FIXME: CONVERT FRACTIONS TO MIXED NUMBERS
-elif operator == '-':
-    subtraction(num_1, num_2, denom_1, denom_2)
-elif operator == '*':
-    multiplication(num_1, num_2, denom_1, denom_2)
-elif operator == '/':
-    division(num_1, num_2, denom_1, denom_2)
+if denom_1 > 0 and denom_2 > 0:
+    if operator == '+':
+        sum = addition(num_1, num_2, denom_1, denom_2)
+
+        print(sum) #FIXME: CONVERT FRACTIONS TO MIXED NUMBERS
+    elif operator == '-':
+        subtraction(num_1, num_2, denom_1, denom_2)
+    elif operator == '*':
+        multiplication(num_1, num_2, denom_1, denom_2)
+    elif operator == '/':
+        division(num_1, num_2, denom_1, denom_2)
+    else:
+        print("Error. Invalid operator.")
 else:
-    print("Error. Invalid operator.")
+    print("Denominator cannot be 0.")
